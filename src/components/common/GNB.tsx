@@ -11,8 +11,10 @@ export default function GNB() {
         </div>
         <ul className="flex gap-4">
           {NAV_LIST.map(({ label, href }) => (
-            <li key={label} className="bg-amber-200 px-2 text-xl">
-              <Link href={href}>{label}</Link>
+            <li key={label} className="font-mono text-xl">
+              <Link className="nav-link" href={href}>
+                {label}
+              </Link>
             </li>
           ))}
         </ul>

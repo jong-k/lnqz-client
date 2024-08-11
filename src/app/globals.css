@@ -3,3 +3,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-link {
+    @apply relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-[0.35rem] left-0 h-1 w-full origin-left scale-x-0 rounded-md bg-amber-200 transition-transform duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+}
