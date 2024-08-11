@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @layer components {
+  /* nav bar link의 hover 효과 */
   .nav-link {
     @apply relative;
   }

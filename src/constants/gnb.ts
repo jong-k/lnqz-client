@@ -8,3 +8,5 @@ export const NAV_LIST = [
     href: "/about",
   },
 ];
+
+export const GNB_HEIGHT = 84;
