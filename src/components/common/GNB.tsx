@@ -36,7 +36,7 @@ export default function GNB() {
         bgHasColor ? "bg-slate-900" : "bg-transparent",
       )}
     >
-      <div className="container mx-auto flex h-full w-full items-center justify-between px-4 text-2xl text-white">
+      <div className="container-box flex h-full w-full items-center justify-between text-2xl text-white">
         <div className="font-bold">
           <Link href="/">김종한의 기술 블로그</Link>
         </div>

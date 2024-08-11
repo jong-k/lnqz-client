@@ -19,8 +19,7 @@ export default function RootLayout({
       <body>
         <GNB />
         <Header />
-        {children}
-
+        <div className="container-box main-box">{children}</div>
         <Footer />
       </body>
     </html>
