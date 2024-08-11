@@ -7,6 +7,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      height: {
+        gnb: "84px",
+        heroImage: "420px",
+      },
       fontFamily: {
         sans: [
           "Pretendard Variable",
@@ -25,6 +29,9 @@ const config: Config = {
           "Segoe UI Symbol",
           "sans-serif",
         ],
+      },
+      zIndex: {
+        gnb: "50",
       },
     },
   },

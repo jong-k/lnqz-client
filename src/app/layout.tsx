@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import GNB from "@/components/common/GNB";
 
 export const metadata: Metadata = {
   title: "김종한의 기술 블로그",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <GNB />
         <Header />
         {children}
 
