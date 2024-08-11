@@ -1,1 +1,1 @@
-export * from "./gnb";
+export * from "./layout";

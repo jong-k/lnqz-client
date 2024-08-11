@@ -10,6 +10,7 @@ const config: Config = {
       height: {
         gnb: "84px",
         heroImage: "420px",
+        footer: "148px",
       },
       fontFamily: {
         sans: [

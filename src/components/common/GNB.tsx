@@ -36,13 +36,13 @@ export default function GNB() {
         bgHasColor ? "bg-slate-900" : "bg-transparent",
       )}
     >
-      <div className="container mx-auto flex h-full w-full items-center justify-between px-4">
-        <div className="text-2xl font-bold text-white">
+      <div className="container mx-auto flex h-full w-full items-center justify-between px-4 text-2xl text-white">
+        <div className="font-bold">
           <Link href="/">김종한의 기술 블로그</Link>
         </div>
         <ul className="flex gap-4">
           {NAV_LIST.map(({ label, href }) => (
-            <li key={label} className="font-mono text-2xl font-semibold text-white">
+            <li key={label} className="font-mono font-semibold">
               <Link className="nav-link" href={href}>
                 {label}
               </Link>
