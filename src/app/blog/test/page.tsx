@@ -3,7 +3,7 @@ import TestMdx from "@/contents/blog/test.mdx";
 
 export default function TestPage() {
   return (
-    <div>
+    <div className="prose">
       <TestMdx />
     </div>
   );
