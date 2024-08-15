@@ -6,7 +6,7 @@ interface HeroImageProps {
 
 export default function HeroImage({ src }: HeroImageProps) {
   return (
-    <div className="h-heroImage relative w-full">
+    <div className="relative h-heroImage w-full">
       <Image src={src} alt="hero-image" fill style={{ objectFit: "cover" }} />
     </div>
   );

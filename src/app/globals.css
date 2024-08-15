@@ -15,10 +15,6 @@
     @apply absolute -bottom-[0.35rem] left-0 h-1 w-full origin-left scale-x-0 rounded-md bg-amber-200 transition-transform duration-300;
   }
 
-  .nav-link:hover::after {
-    @apply scale-x-100;
-  }
-
   /* footer가 올라오는 것을 방지하기 위해 main 최소 height 지정 */
   .main-box {
     margin-top: 60px;

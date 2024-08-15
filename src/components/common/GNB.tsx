@@ -1,11 +1,20 @@
 "use client";
+
 import clsx from "clsx";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState, useCallback } from "react";
 import { NAV_LIST, GNB_HEIGHT } from "@/constants";
 
 export default function GNB() {
   const [bgHasColor, setBgHasColor] = useState(false);
+  const [currentPageParam, setCurrentPageParam] = useState("");
+  const pathname = usePathname();
+  const getCurrentPageParam = useCallback(() => {
+    if (pathname === "/" || pathname.startsWith("/blog")) return "/blog";
+    if (pathname.startsWith("/about")) return "/about";
+    return "/blog";
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +31,10 @@ export default function GNB() {
     };
   });
 
+  useEffect(() => {
+    setCurrentPageParam(getCurrentPageParam());
+  }, [getCurrentPageParam, pathname]);
+
   return (
     <nav
       className={clsx(
@@ -36,18 +49,28 @@ export default function GNB() {
         bgHasColor ? "bg-slate-900" : "bg-transparent",
       )}
     >
-      <div className="container-box flex h-full w-full items-center justify-between text-2xl text-white">
+      <div className="container-box flex h-full w-full items-center justify-between font-mono text-2xl text-white">
         <div className="font-bold">
-          <Link href="/">김종한의 기술 블로그</Link>
+          <Link href="/">jonghan.log</Link>
         </div>
         <ul className="flex gap-4">
-          {NAV_LIST.map(({ label, href }) => (
-            <li key={label} className="font-mono font-semibold">
-              <Link className="nav-link" href={href}>
-                {label}
-              </Link>
-            </li>
-          ))}
+          {NAV_LIST.map(({ label, href }) => {
+            return (
+              <li key={label} className="font-semibold">
+                <Link
+                  onMouseEnter={() => setCurrentPageParam(href)}
+                  onMouseLeave={() => setCurrentPageParam(getCurrentPageParam())}
+                  className={clsx(
+                    "nav-link",
+                    currentPageParam === href && "after:scale-x-100",
+                  )}
+                  href={href}
+                >
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>
