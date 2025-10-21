@@ -7,21 +7,18 @@ const config = {
   bracketSameLine: false,
   bracketSpacing: true,
   endOfLine: "lf",
+  importOrder: ["<THIRD_PARTY_MODULES>", "^@(.*)$", "^[.]/", "^[.]{2,}/"],
+  importOrderCaseInsensitive: true,
+  importOrderSortSpecifiers: true,
   jsxSingleQuote: false,
+  plugins: ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
   printWidth: 120,
   quoteProps: "as-needed",
   semi: true,
   singleQuote: false,
   tabWidth: 2,
-  trailingComma: "es5",
-  plugins: [
-    "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-tailwindcss",
-  ],
-  importOrder: ["<THIRD_PARTY_MODULES>", "^@(.*)$", "^[.]/", "^[.]{2,}/"],
-  importOrderSortSpecifiers: true,
-  importOrderCaseInsensitive: true,
   tailwindStylesheet: "./src/app/globals.css",
+  trailingComma: "es5",
 };
 
 export default config;
