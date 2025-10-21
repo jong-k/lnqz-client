@@ -8,7 +8,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "jong-k",
@@ -23,12 +24,24 @@
     "tailwindcss": "^4.1.15"
   },
   "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@next/eslint-plugin-next": "^15.5.6",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "24.9.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-perfectionist": "^4.15.1",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "eslint-plugin-unicorn": "^61.0.2",
+    "globals": "^16.4.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.46.2"
   }
 }
