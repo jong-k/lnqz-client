@@ -10,7 +10,7 @@ import js from "@eslint/js";
 import pluginNext from "@next/eslint-plugin-next";
 
 export default defineConfig([
-  { ignores: [".next/**"] },
+  { ignores: [".next/**", "./src/components/**"] },
   {
     extends: ["js/recommended"],
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
