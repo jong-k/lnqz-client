@@ -1,3 +1,12 @@
+import { MaxWidthWrapper } from "@/shared/ui";
+import Shortener from "./_components/shortener";
+
 export default function Home() {
-  return <h1 className="text-3xl font-bold">안녕하세요</h1>;
+  return (
+    <div className="w-full bg-slate-100 py-20">
+      <MaxWidthWrapper>
+        <Shortener />
+      </MaxWidthWrapper>
+    </div>
+  );
 }

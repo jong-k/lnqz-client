@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
+import Footer from "./_components/footer";
+import Header from "./_components/header";
 import "./globals.css";
 
 const pretendard = localFont({
@@ -21,7 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html className={pretendard.className} lang="ko">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+        <Toaster closeButton position="top-center" richColors theme="light" />
+      </body>
     </html>
   );
 }
