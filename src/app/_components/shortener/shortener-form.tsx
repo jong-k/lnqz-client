@@ -18,7 +18,7 @@ export default function ShortenerForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputRef.current.value) return;
+    if (!inputRef.current?.value) return;
     console.log(inputRef.current?.value);
     toast.info("🚧 기능 준비중 🚧");
   };
