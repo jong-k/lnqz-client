@@ -14,6 +14,9 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   description: "lnqz.site에서 긴 URL을 짧게 줄여보세요",
+  icons: {
+    icon: "/icons/favicon.ico",
+  },
   title: "Link Squeeze | 단순한 URL 단축 서비스",
 };
 
