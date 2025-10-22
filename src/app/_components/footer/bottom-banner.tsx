@@ -1,12 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Logo } from "@/shared/ui";
 
 export default function BottomBanner() {
   return (
     <div className="mb-8 flex w-full flex-col justify-between gap-4 md:mb-0 md:flex-row md:items-center md:gap-0">
       <div>
         <Link href="/">
-          <Image alt="Logo" height={100} src="/images/logo.png" width={100} />
+          <Logo alt="Link Squeeze" height={100} width={100} />
         </Link>
       </div>
       <div>© 2025 링크 스퀴즈 | 링크를 줄이세요, 당신의 시간은 소중하니까</div>
