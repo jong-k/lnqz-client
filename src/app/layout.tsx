@@ -24,9 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html className={pretendard.className} lang="ko">
-      <body>
+      <body className="flex min-h-dvh flex-col">
         <Header />
-        {children}
+        <main className="flex-1">{children}</main>
         <Footer />
         <Toaster closeButton position="top-center" richColors theme="light" />
       </body>
