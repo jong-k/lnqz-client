@@ -2,7 +2,7 @@ import { TriangleAlert } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 
-export default async function NotFound() {
+export default function NotFound() {
   return (
     <div className="m-auto flex w-fit flex-col items-center gap-4 rounded-md bg-white p-8 shadow-md">
       <div className="flex items-center gap-2 text-[clamp(1rem,5vw,1.5rem)] font-semibold">
