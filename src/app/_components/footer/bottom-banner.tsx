@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function BottomBanner() {
   return (
-    <div className="flex w-full items-center justify-between">
+    <div className="mb-8 flex w-full flex-col justify-between gap-4 md:mb-0 md:flex-row md:items-center md:gap-0">
       <div>
         <Link href="/">
           <Image alt="Logo" height={100} src="/images/logo.png" width={100} />

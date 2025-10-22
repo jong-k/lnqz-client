@@ -5,12 +5,10 @@ import FooterMenu from "./footer-menu";
 
 export default function Footer() {
   return (
-    <footer>
-      <MaxWidthWrapper>
-        <FooterMenu />
-        <Divider />
-        <BottomBanner />
-      </MaxWidthWrapper>
-    </footer>
+    <MaxWidthWrapper>
+      <FooterMenu />
+      <Divider />
+      <BottomBanner />
+    </MaxWidthWrapper>
   );
 }
