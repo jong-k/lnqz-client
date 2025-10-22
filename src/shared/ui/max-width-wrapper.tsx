@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib";
+import { cn } from "@/shared/shadcn-ui/lib";
 
 interface MaxWidthWrapperProps {
   children: React.ReactNode;
