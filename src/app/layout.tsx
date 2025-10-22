@@ -26,7 +26,8 @@ export default function RootLayout({
     <html className={pretendard.className} lang="ko">
       <body className="flex min-h-dvh flex-col">
         <Header />
-        <main className="flex-1">{children}</main>
+        {/* 전체 페이지 백그라운드 컬러 주입 */}
+        <main className="flex-1 bg-slate-100 py-20">{children}</main>
         <Footer />
         <Toaster closeButton position="top-center" richColors theme="light" />
       </body>
