@@ -16,11 +16,29 @@ export default function ShortenerForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputRef.current?.value) return;
-    console.log(inputRef.current?.value);
-    toast.info("🚧 기능 준비중 🚧");
+    const targetUrl = inputRef.current?.value;
+    // url validation 추가
+    if (!targetUrl) {
+      toast.error("URL을 입력해주세요.");
+      return;
+    }
+
+    try {
+      const result = await fetch("/api/urls", {
+        body: JSON.stringify({ targetUrl }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+      const { data } = await result.json();
+      console.log(data);
+    } catch (error) {
+      toast.error("단축 URL 생성에 실패했습니다");
+      console.error(error);
+    }
   };
 
   return (
