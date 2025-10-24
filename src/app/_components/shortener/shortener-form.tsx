@@ -43,9 +43,12 @@ export default function ShortenerForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const targetUrl = inputRef.current?.value;
-    // url validation 추가
     if (!targetUrl) {
       toast.error("URL을 입력해주세요.");
+      return;
+    }
+    if (isInvalidUrl) {
+      toast.error("유효한 URL을 입력해주세요.");
       return;
     }
 
@@ -73,7 +76,6 @@ export default function ShortenerForm() {
           onChange={debouncedHandleChange}
           placeholder="https://example.com/"
           ref={inputRef}
-          type="url"
         />
         <button
           aria-label="입력값 지우기"
@@ -84,7 +86,7 @@ export default function ShortenerForm() {
           <X aria-hidden className="size-4" />
         </button>
       </div>
-      <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">URL이 유효하지 않습니다</p>}</div>
+      <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">URL이 유효하지 않습니다.</p>}</div>
       <Button className="cursor-pointer bg-sky-500 hover:bg-sky-400" type="submit">
         단축 URL 생성
       </Button>
