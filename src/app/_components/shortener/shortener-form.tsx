@@ -1,13 +1,22 @@
 "use client";
 
+import { debounce } from "es-toolkit/function";
 import { X } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
+import * as z from "zod";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 import { Input } from "@/shared/shadcn-ui/components/ui/input";
 
+const urlSchema = z.object({
+  targetUrl: z.url({
+    protocol: /^https?$/,
+  }),
+});
+
 export default function ShortenerForm() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isInvalidUrl, setIsInvalidUrl] = useState<boolean>(false);
 
   const clearInput = () => {
     if (inputRef.current) {
@@ -15,6 +24,21 @@ export default function ShortenerForm() {
       inputRef.current.focus();
     }
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value) {
+      const result = urlSchema.safeParse({ targetUrl: e.target.value });
+      if (result.success) {
+        setIsInvalidUrl(false);
+      } else {
+        setIsInvalidUrl(true);
+      }
+    } else {
+      setIsInvalidUrl(false);
+    }
+  };
+
+  const debouncedHandleChange = debounce(handleChange, 300);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +70,7 @@ export default function ShortenerForm() {
       <div className="relative">
         <Input
           className="peer border-2 pr-10 selection:bg-sky-500 focus:outline-2 focus:outline-sky-500 focus-visible:border-sky-500 focus-visible:ring-sky-500/50"
+          onChange={debouncedHandleChange}
           placeholder="https://example.com/"
           ref={inputRef}
           type="url"
@@ -59,7 +84,7 @@ export default function ShortenerForm() {
           <X aria-hidden className="size-4" />
         </button>
       </div>
-      {/* 입력값 밸리데이션 */}
+      <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">URL이 유효하지 않습니다</p>}</div>
       <Button className="cursor-pointer bg-sky-500 hover:bg-sky-400" type="submit">
         단축 URL 생성
       </Button>
