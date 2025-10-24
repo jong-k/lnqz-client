@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 import * as z from "zod";
+import { Alert, AlertDescription, AlertTitle } from "@/shared/shadcn-ui/components/ui/alert";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 import { Input } from "@/shared/shadcn-ui/components/ui/input";
 
@@ -17,6 +18,7 @@ const urlSchema = z.object({
 export default function ShortenerForm() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isInvalidUrl, setIsInvalidUrl] = useState<boolean>(false);
+  const [generatedShortUrl, setGeneratedShortUrl] = useState<string>("");
 
   const clearInput = () => {
     if (inputRef.current) {
@@ -61,7 +63,8 @@ export default function ShortenerForm() {
         method: "POST",
       });
       const { data } = await response.json();
-      console.log(data);
+      setGeneratedShortUrl(data.shortUrl);
+      toast.success("단축 URL 생성에 성공했습니다");
     } catch (error) {
       toast.error("단축 URL 생성에 실패했습니다");
       console.error(error);
@@ -72,7 +75,7 @@ export default function ShortenerForm() {
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <div className="relative">
         <Input
-          className="peer border-2 pr-10 selection:bg-sky-500 focus:outline-2 focus:outline-sky-500 focus-visible:border-sky-500 focus-visible:ring-sky-500/50"
+          className="peer h-10 border-2 pr-10 selection:bg-sky-500 focus:outline-2 focus:outline-sky-500 focus-visible:border-sky-500 focus-visible:ring-sky-500/50"
           onChange={debouncedHandleChange}
           placeholder="https://example.com/"
           ref={inputRef}
@@ -87,9 +90,15 @@ export default function ShortenerForm() {
         </button>
       </div>
       <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">URL이 유효하지 않습니다.</p>}</div>
-      <Button className="cursor-pointer bg-sky-500 hover:bg-sky-400" type="submit">
+      <Button className="cursor-pointer bg-sky-500 font-semibold shadow-sm hover:bg-sky-400" size="lg" type="submit">
         단축 URL 생성
       </Button>
+      {generatedShortUrl && (
+        <Alert className="bg-slate-100 shadow-sm">
+          <AlertTitle>생성된 단축 URL</AlertTitle>
+          <AlertDescription>{generatedShortUrl}</AlertDescription>
+        </Alert>
+      )}
     </form>
   );
 }
