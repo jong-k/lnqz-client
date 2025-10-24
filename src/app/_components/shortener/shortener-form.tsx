@@ -96,7 +96,16 @@ export default function ShortenerForm() {
       {generatedShortUrl && (
         <Alert className="bg-slate-100 shadow-sm">
           <AlertTitle>생성된 단축 URL</AlertTitle>
-          <AlertDescription>{generatedShortUrl}</AlertDescription>
+          <AlertDescription className="w-full">
+            <a
+              className="underline hover:text-sky-600"
+              href={generatedShortUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {generatedShortUrl}
+            </a>
+          </AlertDescription>
         </Alert>
       )}
     </form>
