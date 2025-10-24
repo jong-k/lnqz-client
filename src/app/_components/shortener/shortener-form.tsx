@@ -53,14 +53,14 @@ export default function ShortenerForm() {
     }
 
     try {
-      const result = await fetch("/api/urls", {
+      const response = await fetch("/api/urls", {
         body: JSON.stringify({ targetUrl }),
         headers: {
           "Content-Type": "application/json",
         },
         method: "POST",
       });
-      const { data } = await result.json();
+      const { data } = await response.json();
       console.log(data);
     } catch (error) {
       toast.error("단축 URL 생성에 실패했습니다");
