@@ -33,10 +33,11 @@ export async function POST(request: NextRequest) {
         },
         { status: 201 }
       );
+    } else {
+      return NextResponse.json({ message: "단축 URL 생성에 실패했습니다." }, { status: 400 });
     }
   } catch (error) {
     console.error("Error creating short URL:", error);
     return NextResponse.json({ message: "단축 URL 생성에 실패했습니다." }, { status: 400 });
   }
-  return NextResponse.json({ message: "단축 URL 생성에 실패했습니다." }, { status: 400 });
 }

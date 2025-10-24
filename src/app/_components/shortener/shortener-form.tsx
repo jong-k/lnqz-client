@@ -62,9 +62,13 @@ export default function ShortenerForm() {
         },
         method: "POST",
       });
-      const { data } = await response.json();
-      setGeneratedShortUrl(data.shortUrl);
-      toast.success("단축 URL 생성에 성공했습니다");
+      if (response.ok) {
+        const { data } = await response.json();
+        setGeneratedShortUrl(data.shortUrl);
+        toast.success("단축 URL 생성에 성공했습니다");
+      } else {
+        toast.error("단축 URL 생성에 실패했습니다");
+      }
     } catch (error) {
       toast.error("단축 URL 생성에 실패했습니다");
       console.error(error);
