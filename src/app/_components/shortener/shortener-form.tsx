@@ -44,10 +44,6 @@ export default function ShortenerForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 서버 배포 후 주석 제거 -
-    toast.info("🚧 기능 준비중 🚧");
-    return;
-    // ------------------------
     const targetUrl = inputRef.current?.value;
     if (!targetUrl) {
       toast.error("URL을 입력해주세요.");
