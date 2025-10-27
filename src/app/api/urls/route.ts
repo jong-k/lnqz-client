@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as z from "zod";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const urlSchema = z.object({
   targetUrl: z.url({
     protocol: /^https?$/,
@@ -14,8 +17,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "URL이 유효하지 않습니다." }, { status: 400 });
   }
 
+  const base = process.env.API_URL ?? process.env["API_URL"];
+  if (!base) {
+    console.error("API_URL is not set at runtime");
+    return NextResponse.json({ message: "서버 설정 오류(API_URL 누락)" }, { status: 500 });
+  }
+
   try {
-    const response = await fetch(`${process.env.API_URL}/urls`, {
+    const url = new URL("/urls", base).toString();
+    const response = await fetch(url, {
       body: JSON.stringify({ targetUrl }),
       headers: {
         "Content-Type": "application/json",
@@ -34,10 +44,17 @@ export async function POST(request: NextRequest) {
         { status: 201 }
       );
     } else {
+      const errorText = await response.text().catch(() => "");
+      console.error("Create short URL failed", {
+        errorText,
+        status: response.status,
+        statusText: response.statusText,
+        url,
+      });
       return NextResponse.json({ message: "단축 URL 생성에 실패했습니다." }, { status: 400 });
     }
   } catch (error) {
-    console.error("Error creating short URL:", error);
+    console.error("Error creating short URL:", { base, error });
     return NextResponse.json({ message: "단축 URL 생성에 실패했습니다." }, { status: 400 });
   }
 }
