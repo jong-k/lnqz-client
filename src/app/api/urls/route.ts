@@ -24,7 +24,8 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const url = new URL("/urls", base).toString();
+    const baseWithSlash = base.endsWith("/") ? base : `${base}/`;
+    const url = new URL("urls", baseWithSlash).toString();
     const response = await fetch(url, {
       body: JSON.stringify({ targetUrl }),
       headers: {
