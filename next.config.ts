@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   compress: true,
+  env: {
+    // 빌드 시점에 주입해 SSR에서도 값 고정
+    API_URL: process.env.API_URL,
+  },
   async headers() {
     return [
       {
