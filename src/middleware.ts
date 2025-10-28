@@ -13,6 +13,7 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(`${apiUrl}/${shortCode}`);
     } else {
       console.error("API_URL 환경 변수가 런타임에 설정되어 있지 않습니다:", apiUrl);
+      return NextResponse.redirect("/404");
     }
   }
 }
