@@ -18,10 +18,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "URL이 유효하지 않습니다." }, { status: 400 });
   }
 
-  const apiUrl = process.env.API_URL ?? process.env["API_URL"];
+  const apiUrl = process.env.API_URL;
+  const serviceUrl = process.env.SERVICE_URL;
   if (!apiUrl) {
     console.error("API_URL 환경 변수가 런타임에 설정되어 있지 않습니다:", apiUrl);
     return NextResponse.json({ message: "서버 설정 오류(API_URL 누락)" }, { status: 500 });
+  }
+  if (!serviceUrl) {
+    console.error("SERVICE_URL 환경 변수가 런타임에 설정되어 있지 않습니다:", serviceUrl);
+    return NextResponse.json({ message: "서버 설정 오류(SERVICE_URL 누락)" }, { status: 500 });
   }
 
   try {
@@ -36,7 +41,7 @@ export async function POST(request: NextRequest) {
       const { shortCode } = await response.json();
       return NextResponse.json(
         {
-          shortUrl: `${request.nextUrl.origin}/${shortCode}`,
+          shortUrl: `${serviceUrl}/${shortCode}`,
         },
         { status: 201 }
       );
