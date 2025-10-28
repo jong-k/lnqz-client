@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
   const base = process.env.API_URL ?? process.env["API_URL"];
   if (!base) {
-    console.error("API_URL is not set at runtime");
+    console.error("API_URL 환경 변수가 런타임에 설정되어 있지 않습니다.");
     return NextResponse.json({ message: "서버 설정 오류(API_URL 누락)" }, { status: 500 });
   }
 
