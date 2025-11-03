@@ -17,6 +17,23 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icons/favicon.ico",
   },
+  metadataBase: new URL("https://lnqz.site"),
+  openGraph: {
+    description: "lnqz.site에서 긴 URL을 짧게 줄여보세요",
+    images: [
+      {
+        alt: "Link Squeeze Logo",
+        height: 630,
+        url: "/images/logo.png",
+        width: 1200,
+      },
+    ],
+    locale: "ko_KR",
+    siteName: "Link Squeeze",
+    title: "Link Squeeze | 단순한 URL 단축 서비스",
+    type: "website",
+    url: "https://lnqz.site",
+  },
   title: "Link Squeeze | 단순한 URL 단축 서비스",
 };
 
