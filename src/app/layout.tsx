@@ -35,10 +35,6 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://lnqz.site",
   },
-  other: {
-    content: "030c4479ef3f305d4aac81afc302ee3d3188884c",
-    name: "naver-site-verification",
-  },
   title: "Link Squeeze | 단순한 URL 단축 서비스",
 };
 
