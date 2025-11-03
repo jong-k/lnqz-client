@@ -9,7 +9,7 @@ export default function NavBar() {
   return (
     <nav className="flex items-center justify-between">
       <Link href="/">
-        <Logo alt="Link Squeeze" height={100} priority sizes="(max-width: 640px) 88px, 100px" width={100} />
+        <Logo alt="Link Squeeze" height={100} priority sizes="100px" width={100} />
       </Link>
       <Button className="cursor-pointer" onClick={() => toast.info("🚧 기능 준비중 🚧")} variant="ghost">
         공지사항
