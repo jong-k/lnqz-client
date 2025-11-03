@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
+import { GoogleTagManager } from "@next/third-parties/google";
 import Footer from "./_components/footer";
 import Header from "./_components/header";
 import "./globals.css";
@@ -17,6 +18,23 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icons/favicon.ico",
   },
+  metadataBase: new URL("https://lnqz.site"),
+  openGraph: {
+    description: "lnqz.site에서 긴 URL을 짧게 줄여보세요",
+    images: [
+      {
+        alt: "Link Squeeze Logo",
+        height: 630,
+        url: "/images/logo.png",
+        width: 1200,
+      },
+    ],
+    locale: "ko_KR",
+    siteName: "Link Squeeze",
+    title: "Link Squeeze | 단순한 URL 단축 서비스",
+    type: "website",
+    url: "https://lnqz.site",
+  },
   title: "Link Squeeze | 단순한 URL 단축 서비스",
 };
 
@@ -27,6 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className={pretendard.className} lang="ko">
+      <GoogleTagManager gtmId="GTM-WM6D948M" />
       <body className="flex min-h-dvh flex-col">
         <Header />
         {/* 전체 페이지 백그라운드 컬러 주입 */}
