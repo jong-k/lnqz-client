@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
+import { GoogleTagManager } from "@next/third-parties/google";
 import Footer from "./_components/footer";
 import Header from "./_components/header";
 import "./globals.css";
@@ -44,6 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className={pretendard.className} lang="ko">
+      <GoogleTagManager gtmId="GTM-WM6D948M" />
       <body className="flex min-h-dvh flex-col">
         <Header />
         {/* 전체 페이지 백그라운드 컬러 주입 */}
