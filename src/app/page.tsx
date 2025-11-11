@@ -1,10 +1,10 @@
 import { ShortenerContainer } from "@/features/shorten-url/ui";
-import { MaxWidthWrapper } from "@/shared/ui";
+import { ResponsiveWrapper } from "@/shared/ui";
 
 export default function Home() {
   return (
-    <MaxWidthWrapper>
+    <ResponsiveWrapper>
       <ShortenerContainer />
-    </MaxWidthWrapper>
+    </ResponsiveWrapper>
   );
 }
