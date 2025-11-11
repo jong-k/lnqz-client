@@ -3,7 +3,7 @@ import BottomBanner from "./bottom-banner";
 import Divider from "./divider";
 import FooterMenu from "./footer-menu";
 
-export default function Footer() {
+export function AppFooter() {
   return (
     <MaxWidthWrapper>
       <FooterMenu />

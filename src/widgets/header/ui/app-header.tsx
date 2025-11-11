@@ -5,7 +5,7 @@ import { MaxWidthWrapper } from "@/shared/ui";
 import NavBar from "./nav-bar";
 import TopBanner from "./top-banner";
 
-export default function Header() {
+export function AppHeader() {
   const pathname = usePathname();
   const showTopBanner = pathname === "/";
 

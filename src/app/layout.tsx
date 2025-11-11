@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
+import { AppFooter } from "@/widgets/footer/ui";
+import { AppHeader } from "@/widgets/header/ui";
 import { GoogleTagManager } from "@next/third-parties/google";
-import Footer from "./_components/footer";
-import Header from "./_components/header";
-import "./globals.css";
+import "../styles/globals.css";
 
 const pretendard = localFont({
   display: "swap",
@@ -47,11 +47,11 @@ export default function RootLayout({
     <html className={pretendard.className} lang="ko">
       <GoogleTagManager gtmId="GTM-WM6D948M" />
       <body className="flex min-h-dvh flex-col">
-        <Header />
+        <AppHeader />
         {/* 전체 페이지 백그라운드 컬러 주입 */}
         <main className="flex-1 bg-slate-100 py-20">{children}</main>
-        <Footer />
-        <Toaster closeButton position="top-center" richColors theme="light" />
+        <AppFooter />
+        <Toaster closeButton position="top-center" richColors theme="light" toastOptions={{ duration: 2500 }} />
       </body>
     </html>
   );
