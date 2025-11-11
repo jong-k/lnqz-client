@@ -1,4 +1,4 @@
-import { ShortenerContainer } from "@/entities/url/ui";
+import { ShortenerContainer } from "@/features/shorten-url/ui";
 import { ResponsiveWrapper } from "@/shared/ui";
 
 export default function Home() {

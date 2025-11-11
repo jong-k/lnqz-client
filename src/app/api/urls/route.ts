@@ -1,14 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import * as z from "zod";
+import { urlSchema } from "@/entities/url/model/schemas";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-const urlSchema = z.object({
-  targetUrl: z.url({
-    protocol: /^https?$/,
-  }),
-});
 
 export async function POST(request: NextRequest) {
   const { targetUrl } = await request.json();

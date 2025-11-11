@@ -33,9 +33,9 @@ export function useShortenUrl() {
     try {
       const shortUrl = await createShortUrl(targetUrl);
       setGeneratedShortUrl(shortUrl);
-      toast.success("단축 URL 생성에 성공했습니다.");
+      toast.success("단축 URL 생성에 성공했습니다");
     } catch {
-      toast.error("단축 URL 생성에 실패했습니다.");
+      toast.error("단축 URL 생성에 실패했습니다");
     }
   };
 
