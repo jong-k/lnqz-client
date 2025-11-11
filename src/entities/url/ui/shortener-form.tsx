@@ -4,7 +4,7 @@ import { debounce } from "es-toolkit/function";
 import { X } from "lucide-react";
 import { useMemo, useRef } from "react";
 import type { ChangeEvent } from "react";
-import { useShortenUrl } from "@/features/shorten-url/model/use-shorten-url";
+import { useShortenUrl } from "@/entities/url/model/use-shorten-url";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/shadcn-ui/components/ui/alert";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 import { Input } from "@/shared/shadcn-ui/components/ui/input";

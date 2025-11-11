@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { createShortUrl } from "@/features/shorten-url/lib/create-short-url";
-import { urlSchema } from "@/features/shorten-url/model/schemas";
+import { createShortUrl } from "@/entities/url/api/create-short-url";
+import { urlSchema } from "@/entities/url/model/schemas";
 
 export function useShortenUrl() {
   const [isInvalidUrl, setIsInvalidUrl] = useState<boolean>(false);
@@ -33,9 +33,9 @@ export function useShortenUrl() {
     try {
       const shortUrl = await createShortUrl(targetUrl);
       setGeneratedShortUrl(shortUrl);
-      toast.success("단축 URL 생성에 성공했습니다");
+      toast.success("단축 URL 생성에 성공했습니다.");
     } catch {
-      toast.error("단축 URL 생성에 실패했습니다");
+      toast.error("단축 URL 생성에 실패했습니다.");
     }
   };
 

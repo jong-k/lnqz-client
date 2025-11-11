@@ -8,7 +8,7 @@ export async function createShortUrl(targetUrl: string): Promise<string> {
   });
 
   if (!response.ok) {
-    throw new Error("Failed to create short URL");
+    throw new Error("단축 URL 생성에 실패했습니다.");
   }
 
   const { shortUrl } = (await response.json()) as { shortUrl: string };
