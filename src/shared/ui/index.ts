@@ -1,2 +1,2 @@
 export * from "./logo";
-export * from "./max-width-wrapper";
+export * from "./responsive-wrapper";

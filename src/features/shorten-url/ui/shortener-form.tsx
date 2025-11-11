@@ -2,23 +2,21 @@
 
 import { debounce } from "es-toolkit/function";
 import { X } from "lucide-react";
-import { useRef, useState } from "react";
-import { toast } from "sonner";
-import * as z from "zod";
+import { useRef } from "react";
+import type { ChangeEvent } from "react";
+import { useShortenUrl } from "@/features/shorten-url/model/use-shorten-url";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/shadcn-ui/components/ui/alert";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 import { Input } from "@/shared/shadcn-ui/components/ui/input";
 
-const urlSchema = z.object({
-  targetUrl: z.url({
-    protocol: /^https?$/,
-  }),
-});
-
 export default function ShortenerForm() {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [isInvalidUrl, setIsInvalidUrl] = useState<boolean>(false);
-  const [generatedShortUrl, setGeneratedShortUrl] = useState<string>("");
+
+  const { isInvalidUrl, generatedShortUrl, onUrlChange, submit } = useShortenUrl();
+
+  const debouncedHandleChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
+    onUrlChange(e.target.value);
+  }, 300);
 
   const clearInput = () => {
     if (inputRef.current) {
@@ -27,51 +25,10 @@ export default function ShortenerForm() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value) {
-      const result = urlSchema.safeParse({ targetUrl: e.target.value });
-      if (result.success) {
-        setIsInvalidUrl(false);
-      } else {
-        setIsInvalidUrl(true);
-      }
-    } else {
-      setIsInvalidUrl(false);
-    }
-  };
-
-  const debouncedHandleChange = debounce(handleChange, 300);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const targetUrl = inputRef.current?.value;
-    if (!targetUrl) {
-      toast.error("URL을 입력해주세요.");
-      return;
-    }
-    if (isInvalidUrl) {
-      toast.error("유효한 URL을 입력해주세요.");
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/urls", {
-        body: JSON.stringify({ targetUrl }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-      if (response.ok) {
-        const { shortUrl } = await response.json();
-        setGeneratedShortUrl(shortUrl);
-        toast.success("단축 URL 생성에 성공했습니다");
-      } else {
-        toast.error("단축 URL 생성에 실패했습니다");
-      }
-    } catch {
-      toast.error("단축 URL 생성에 실패했습니다");
-    }
+    const value = inputRef.current?.value ?? "";
+    await submit(value);
   };
 
   return (
