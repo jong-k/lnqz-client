@@ -2,7 +2,7 @@
 
 import { debounce } from "es-toolkit/function";
 import { X } from "lucide-react";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import type { ChangeEvent } from "react";
 import { useShortenUrl } from "@/features/shorten-url/model/use-shorten-url";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/shadcn-ui/components/ui/alert";
@@ -14,13 +14,9 @@ export default function ShortenerForm() {
 
   const { isInvalidUrl, generatedShortUrl, onUrlChange, submit } = useShortenUrl();
 
-  const debouncedHandleChange = useMemo(
-    () =>
-      debounce((e: ChangeEvent<HTMLInputElement>) => {
-        onUrlChange(e.target.value);
-      }, 300),
-    [onUrlChange]
-  );
+  const debouncedHandleChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
+    onUrlChange(e.target.value);
+  }, 300);
 
   const clearInput = () => {
     if (inputRef.current) {

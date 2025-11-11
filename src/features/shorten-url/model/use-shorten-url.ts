@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { createShortUrl } from "@/entities/url/api/create-short-url";
 import { urlSchema } from "@/entities/url/model/schemas";
@@ -9,14 +9,14 @@ export function useShortenUrl() {
   const [isInvalidUrl, setIsInvalidUrl] = useState<boolean>(false);
   const [generatedShortUrl, setGeneratedShortUrl] = useState<string>("");
 
-  const onUrlChange = (value: string) => {
+  const onUrlChange = useCallback((value: string) => {
     if (value) {
       const result = urlSchema.safeParse({ targetUrl: value });
       setIsInvalidUrl(!result.success);
     } else {
       setIsInvalidUrl(false);
     }
-  };
+  }, []);
 
   const submit = async (value: string) => {
     const targetUrl = value?.trim();
