@@ -17,6 +17,7 @@
   "packageManager": "pnpm@10.18.2",
   "dependencies": {
     "@next/third-parties": "^16.0.1",
+    "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/postcss": "^4.1.15",
     "class-variance-authority": "^0.7.1",
