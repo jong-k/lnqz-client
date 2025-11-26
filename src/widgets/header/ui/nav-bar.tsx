@@ -8,7 +8,8 @@ import { Logo } from "@/shared/ui";
 import SelectLocale from "./select-locale";
 
 export default function NavBar() {
-  const t = useTranslations("ui.header");
+  const t = useTranslations();
+
   return (
     <nav className="flex items-center justify-between">
       <Link href="/">
@@ -16,8 +17,12 @@ export default function NavBar() {
       </Link>
       <div className="flex items-center gap-2">
         <SelectLocale />
-        <Button className="cursor-pointer" onClick={() => toast.info("🚧 기능 준비중 🚧")} variant="ghost">
-          {t("announcement")}
+        <Button
+          className="cursor-pointer"
+          onClick={() => toast.info(`🚧 ${t("notification.comingSoon")} 🚧`)}
+          variant="ghost"
+        >
+          {t("ui.header.announcement")}
         </Button>
       </div>
     </nav>
