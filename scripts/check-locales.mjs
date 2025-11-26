@@ -12,12 +12,12 @@ const loadJson = async path => {
   }
 };
 
-const getAllkeys = (obj, parentKey = "") => {
+const getAllKeys = (obj, parentKey = "") => {
   let keys = [];
   for (const key in obj) {
     const newKey = parentKey ? `${parentKey}.${key}` : key;
     if (typeof obj[key] === "object" && obj[key] !== null) {
-      keys = [...keys, ...getAllkeys(obj[key], newKey)];
+      keys = [...keys, ...getAllKeys(obj[key], newKey)];
     } else {
       keys.push(newKey);
     }
@@ -30,8 +30,8 @@ const checkKeys = async () => {
   const koJson = await loadJson(files[0]);
   const enJson = await loadJson(files[1]);
 
-  const koKeys = getAllkeys(koJson);
-  const enKeys = getAllkeys(enJson);
+  const koKeys = getAllKeys(koJson);
+  const enKeys = getAllKeys(enJson);
 
   const missingInKo = enKeys.filter(key => !koKeys.includes(key));
   const missingInEn = koKeys.filter(key => !enKeys.includes(key));
