@@ -13,7 +13,7 @@ export default function BottomBanner() {
         </Link>
       </div>
       <div>
-        &copy; 2025 {t("metaData.title")} | {t("page.home.heading")}
+        &copy; {new Date().getFullYear()} {t("metaData.title")} | {t("page.home.heading")}
       </div>
       <div>
         <div>Made by</div>
