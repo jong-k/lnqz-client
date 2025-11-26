@@ -1,14 +1,12 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getLocale } from "next-intl/server";
 import Link from "next/link";
-import { toast } from "sonner";
-import { Button } from "@/shared/shadcn-ui/components/ui/button";
+import { LocaleSwitcher } from "@/features/switch-locale/ui";
+import type { AppLocale } from "@/shared/i18n/lib";
 import { Logo } from "@/shared/ui";
-import SelectLocale from "./select-locale";
+import AnnouncementButton from "./announcement-button";
 
-export default function NavBar() {
-  const t = useTranslations();
+export default async function NavBar() {
+  const locale = (await getLocale()) as AppLocale;
 
   return (
     <nav className="flex items-center justify-between">
@@ -16,14 +14,8 @@ export default function NavBar() {
         <Logo alt="Link Squeeze" height={100} priority sizes="100px" width={100} />
       </Link>
       <div className="flex items-center gap-2">
-        <SelectLocale />
-        <Button
-          className="cursor-pointer"
-          onClick={() => toast.info(`🚧 ${t("notification.comingSoon")} 🚧`)}
-          variant="ghost"
-        >
-          {t("ui.header.announcement")}
-        </Button>
+        <LocaleSwitcher currentLocale={locale} />
+        <AnnouncementButton />
       </div>
     </nav>
   );
