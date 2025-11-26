@@ -2,6 +2,7 @@
 
 import { debounce } from "es-toolkit/function";
 import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import type { ChangeEvent } from "react";
 import { useShortenUrl } from "@/features/shorten-url/model/use-shorten-url";
@@ -11,7 +12,7 @@ import { Input } from "@/shared/shadcn-ui/components/ui/input";
 
 export default function ShortenerForm() {
   const inputRef = useRef<HTMLInputElement>(null);
-
+  const t = useTranslations();
   const { isInvalidUrl, generatedShortUrl, onUrlChange, submit } = useShortenUrl();
 
   const debouncedHandleChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +42,7 @@ export default function ShortenerForm() {
           ref={inputRef}
         />
         <button
-          aria-label="입력값 지우기"
+          aria-label={t("button.removeInput")}
           className="absolute top-1/2 right-2 -translate-y-1/2 rounded p-1 text-muted-foreground transition-colors peer-placeholder-shown:pointer-events-none peer-placeholder-shown:opacity-0 hover:bg-muted hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
           onClick={clearInput}
           type="button"
@@ -49,13 +50,13 @@ export default function ShortenerForm() {
           <X aria-hidden className="size-4" />
         </button>
       </div>
-      <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">URL이 유효하지 않습니다.</p>}</div>
+      <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">{t("validation.invalidUrl")}</p>}</div>
       <Button className="cursor-pointer bg-sky-500 font-semibold shadow-sm hover:bg-sky-400" size="lg" type="submit">
-        단축 URL 생성
+        {t("button.createShortUrl")}
       </Button>
       {generatedShortUrl && (
         <Alert className="bg-slate-100 shadow-sm">
-          <AlertTitle>생성된 단축 URL</AlertTitle>
+          <AlertTitle>{t("shortener.createdShortUrl")}</AlertTitle>
           <AlertDescription className="w-full">
             <a
               className="underline hover:text-sky-600"
