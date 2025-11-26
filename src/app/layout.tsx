@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 import localFont from "next/font/local";
-import { cookies } from "next/headers";
-import { DEFAULT_LOCALE } from "@/shared/i18n";
+import type { AppLocale } from "@/shared/i18n/lib";
 import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
 import { AppFooter } from "@/widgets/footer/ui";
 import { AppHeader } from "@/widgets/header/ui";
@@ -46,8 +46,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const locale = cookieStore.get("locale")?.value ?? DEFAULT_LOCALE;
+  const locale = (await getLocale()) as AppLocale;
 
   return (
     <html className={pretendard.className} lang={locale}>
