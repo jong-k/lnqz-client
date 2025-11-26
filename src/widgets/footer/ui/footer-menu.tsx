@@ -1,16 +1,15 @@
 "use client";
 
-import { useCallback } from "react";
 import { toast } from "sonner";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 
-export default function FooterMenu() {
-  const handleContactClick = useCallback(() => {
-    const EMAIL_ADDRESS = "dev.jonghankim@gmail.com";
-    navigator.clipboard.writeText(EMAIL_ADDRESS);
-    toast.success(`메일 주소 ${EMAIL_ADDRESS} 를 클립보드에 복사했습니다`);
-  }, []);
+const handleContactClick = () => {
+  const EMAIL_ADDRESS = "dev.jonghankim@gmail.com";
+  navigator.clipboard.writeText(EMAIL_ADDRESS);
+  toast.success(`메일 주소 ${EMAIL_ADDRESS} 를 클립보드에 복사했습니다`);
+};
 
+export default function FooterMenu() {
   return (
     <div className="grid grid-cols-1 gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
       {/* 1열 */}
