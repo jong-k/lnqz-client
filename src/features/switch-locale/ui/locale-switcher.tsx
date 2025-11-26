@@ -14,7 +14,7 @@ const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
 export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
   return (
-    <select defaultValue={currentLocale} onChange={handleChange}>
+    <select className="text-sm font-medium" defaultValue={currentLocale} onChange={handleChange}>
       {LOCALE_OPTIONS.map(({ label, value }) => (
         <option key={value} value={value}>
           {label}
