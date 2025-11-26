@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
+import { cookies } from "next/headers";
+import { DEFAULT_LANGUAGE } from "@/shared/i18n";
 import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
 import { AppFooter } from "@/widgets/footer/ui";
 import { AppHeader } from "@/widgets/header/ui";
@@ -39,16 +41,19 @@ export const metadata: Metadata = {
   title: "Link Squeeze | 단순한 URL 단축 서비스",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const locale = cookieStore.get("locale")?.value ?? DEFAULT_LANGUAGE;
+
   return (
-    <html className={pretendard.className} lang="ko">
+    <html className={pretendard.className} lang={locale}>
       <GoogleTagManager gtmId="GTM-WM6D948M" />
       <body className="flex min-h-dvh flex-col">
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale}>
           <AppHeader />
           {/* 전체 페이지 백그라운드 컬러 주입 */}
           <main className="flex-1 bg-slate-100 py-20">{children}</main>
