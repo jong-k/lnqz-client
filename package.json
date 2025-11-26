@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check-locales": "node scripts/check-locales.mjs"
   },
   "keywords": [],
   "author": "jong-k",
