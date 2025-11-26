@@ -1,35 +1,45 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 
-const handleContactClick = () => {
+const handleContactClick = (t: ReturnType<typeof useTranslations>) => {
   const EMAIL_ADDRESS = "dev.jonghankim@gmail.com";
   navigator.clipboard.writeText(EMAIL_ADDRESS);
-  toast.success(`메일 주소 ${EMAIL_ADDRESS} 를 클립보드에 복사했습니다`);
+  toast.success(t("notification.copyEmail", { email: EMAIL_ADDRESS }));
 };
 
 export default function FooterMenu() {
+  const t = useTranslations();
+
   return (
     <div className="grid grid-cols-1 gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
-      {/* 1열 */}
       <div>
-        <h3 className="mb-4 text-xl">Support</h3>
+        <h3 className="mb-4 text-xl">{t("ui.footer.support")}</h3>
         <div>
-          <Button className="w-fit cursor-pointer" onClick={handleContactClick} variant="link">
-            개발자에게 문의
+          <Button className="w-fit cursor-pointer" onClick={() => handleContactClick(t)} variant="link">
+            {t("ui.footer.contactDeveloper")}
           </Button>
         </div>
       </div>
-      {/* 2열 */}
+
       <div>
-        <h3 className="mb-4 text-xl">Terms & Policy</h3>
+        <h3 className="mb-4 text-xl">{t("ui.footer.termsAndPolicy")}</h3>
         <div className="flex w-full flex-col">
-          <Button className="w-fit cursor-pointer" onClick={() => toast.info("🚧 기능 준비중 🚧")} variant="link">
-            개인정보처리방침
+          <Button
+            className="w-fit cursor-pointer"
+            onClick={() => toast.info(`🚧 ${t("notification.comingSoon")} 🚧`)}
+            variant="link"
+          >
+            {t("ui.footer.serviceTerms")}
           </Button>
-          <Button className="w-fit cursor-pointer" onClick={() => toast.info("🚧 기능 준비중 🚧")} variant="link">
-            이용약관
+          <Button
+            className="w-fit cursor-pointer"
+            onClick={() => toast.info(`🚧 ${t("notification.comingSoon")} 🚧`)}
+            variant="link"
+          >
+            {t("ui.footer.privacyPolicy")}
           </Button>
         </div>
       </div>
