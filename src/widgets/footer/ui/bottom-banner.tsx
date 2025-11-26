@@ -1,9 +1,9 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { Logo } from "@/shared/ui";
 
-export default function BottomBanner() {
-  const t = useTranslations("metaData");
+export default async function BottomBanner() {
+  const t = await getTranslations("metaData");
 
   return (
     <div className="mb-8 flex w-full flex-col justify-between gap-4 md:mb-0 md:flex-row md:items-center md:gap-0">
