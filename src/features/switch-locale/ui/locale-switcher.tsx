@@ -10,12 +10,10 @@ interface LocaleSwitcherProps {
 }
 
 export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
-  const currentLocaleLabel = LOCALE_OPTIONS.find(option => option.value === currentLocale)?.label ?? "한국어";
-
   return (
     <Select defaultValue={currentLocale} onValueChange={value => changeLocale(value as AppLocale)}>
       <SelectTrigger className="min-w-[100px]">
-        <SelectValue placeholder={currentLocaleLabel} />
+        <SelectValue />
       </SelectTrigger>
       <SelectContent className="min-w-[100px]">
         {LOCALE_OPTIONS.map(({ label, value }) => (
