@@ -34,8 +34,11 @@ const checkKeys = async () => {
   const koKeys = getAllKeys(koJson);
   const enKeys = getAllKeys(enJson);
 
-  const missingInKo = enKeys.filter(key => !koKeys.includes(key));
-  const missingInEn = koKeys.filter(key => !enKeys.includes(key));
+  const koKeysSet = new Set(koKeys);
+  const enKeysSet = new Set(enKeys);
+
+  const missingInKo = enKeys.filter(key => !koKeysSet.has(key));
+  const missingInEn = koKeys.filter(key => !enKeysSet.has(key));
   console.log("Checking for missing keys between ko.json and en.json...");
 
   if (missingInKo.length > 0) {
