@@ -1,7 +1,10 @@
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Logo } from "@/shared/ui";
 
 export default function BottomBanner() {
+  const t = useTranslations();
+
   return (
     <div className="mb-8 flex w-full flex-col justify-between gap-4 md:mb-0 md:flex-row md:items-center md:gap-0">
       <div>
@@ -9,7 +12,9 @@ export default function BottomBanner() {
           <Logo alt="Link Squeeze" height={100} sizes="100px" width={100} />
         </Link>
       </div>
-      <div>© 2025 링크 스퀴즈 | 링크를 줄이세요, 당신의 시간은 소중하니까</div>
+      <div>
+        © 2025 {t("metaData.title")} | {t("page.home.heading")}
+      </div>
       <div>
         <div>Made by</div>
         <Link
@@ -18,7 +23,7 @@ export default function BottomBanner() {
           rel="noopener noreferrer"
           target="_blank"
         >
-          김종한
+          {t("metaData.author")}
         </Link>
       </div>
     </div>
