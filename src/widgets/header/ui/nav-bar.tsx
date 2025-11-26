@@ -3,7 +3,7 @@ import { Logo } from "@/shared/ui";
 import AnnouncementButton from "./announcement-button";
 import SelectLocale from "./select-locale";
 
-export default async function NavBar() {
+export default function NavBar() {
   return (
     <nav className="flex items-center justify-between">
       <Link href="/">
