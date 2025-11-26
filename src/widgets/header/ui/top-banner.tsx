@@ -28,7 +28,7 @@ export default function TopBanner({ className, text, url }: TopBannerProps) {
           className="cursor-pointer font-semibold underline decoration-1 underline-offset-4"
           onClick={() => toast.info(`🚧 ${t("notification.comingSoon")} 🚧`)}
         >
-          {t("ui.button.learnMore")}
+          {t("button.learnMore")}
         </button>
       )}
     </div>
