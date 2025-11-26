@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Badge } from "@/shared/shadcn-ui/components/ui/badge";
 import { cn } from "@/shared/shadcn-ui/lib";
@@ -11,6 +12,8 @@ interface TopBannerProps {
 }
 
 export default function TopBanner({ className, text, url }: TopBannerProps) {
+  const t = useTranslations();
+
   return (
     <div
       className={cn(
@@ -23,9 +26,9 @@ export default function TopBanner({ className, text, url }: TopBannerProps) {
       {url && (
         <button
           className="cursor-pointer font-semibold underline decoration-1 underline-offset-4"
-          onClick={() => toast.info("🚧 기능 준비중 🚧")}
+          onClick={() => toast.info(`🚧 ${t("notification.comingSoon")} 🚧`)}
         >
-          자세히 알아보기
+          {t("button.learnMore")}
         </button>
       )}
     </div>

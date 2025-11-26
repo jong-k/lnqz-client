@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
 import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
 import { AppFooter } from "@/widgets/footer/ui";
@@ -47,11 +48,13 @@ export default function RootLayout({
     <html className={pretendard.className} lang="ko">
       <GoogleTagManager gtmId="GTM-WM6D948M" />
       <body className="flex min-h-dvh flex-col">
-        <AppHeader />
-        {/* 전체 페이지 백그라운드 컬러 주입 */}
-        <main className="flex-1 bg-slate-100 py-20">{children}</main>
-        <AppFooter />
-        <Toaster closeButton position="top-center" richColors theme="light" toastOptions={{ duration: 2500 }} />
+        <NextIntlClientProvider>
+          <AppHeader />
+          {/* 전체 페이지 백그라운드 컬러 주입 */}
+          <main className="flex-1 bg-slate-100 py-20">{children}</main>
+          <AppFooter />
+          <Toaster closeButton position="top-center" richColors theme="light" toastOptions={{ duration: 2500 }} />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

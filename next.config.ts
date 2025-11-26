@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   compress: true,
@@ -28,5 +29,6 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
   },
 };
+const withNextIntl = createNextIntlPlugin("./src/shared/i18n/request.ts");
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
