@@ -9,6 +9,7 @@ const loadJson = async path => {
     return JSON.parse(jsonContent);
   } catch (error) {
     console.error(`Error reading or parsing JSON file at ${path}:`, error);
+    throw error;
   }
 };
 
