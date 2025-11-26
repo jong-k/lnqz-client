@@ -1,10 +1,10 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
-import { DEFAULT_LANGUAGE } from "@/shared/i18n";
+import { DEFAULT_LOCALE } from "@/shared/i18n";
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
-  const locale = cookieStore.get("locale")?.value ?? DEFAULT_LANGUAGE;
+  const locale = cookieStore.get("locale")?.value ?? DEFAULT_LOCALE;
 
   return {
     locale,

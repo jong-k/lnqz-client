@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
 import { cookies } from "next/headers";
-import { DEFAULT_LANGUAGE } from "@/shared/i18n";
+import { DEFAULT_LOCALE } from "@/shared/i18n";
 import { Toaster } from "@/shared/shadcn-ui/components/ui/sonner";
 import { AppFooter } from "@/widgets/footer/ui";
 import { AppHeader } from "@/widgets/header/ui";
@@ -47,7 +47,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const locale = cookieStore.get("locale")?.value ?? DEFAULT_LANGUAGE;
+  const locale = cookieStore.get("locale")?.value ?? DEFAULT_LOCALE;
 
   return (
     <html className={pretendard.className} lang={locale}>
