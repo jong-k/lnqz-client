@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Logo } from "@/shared/ui";
 
 export default function BottomBanner() {
-  const t = useTranslations();
+  const t = useTranslations("metaData");
 
   return (
     <div className="mb-8 flex w-full flex-col justify-between gap-4 md:mb-0 md:flex-row md:items-center md:gap-0">
@@ -13,7 +13,7 @@ export default function BottomBanner() {
         </Link>
       </div>
       <div>
-        &copy; {new Date().getFullYear()} {t("metaData.title")} | {t("page.home.heading")}
+        &copy; {new Date().getFullYear()} {t("title")} | {t("slogan")}
       </div>
       <div>
         <div>Made by</div>
@@ -23,7 +23,7 @@ export default function BottomBanner() {
           rel="noopener noreferrer"
           target="_blank"
         >
-          {t("metaData.author")}
+          {t("author")}
         </Link>
       </div>
     </div>
