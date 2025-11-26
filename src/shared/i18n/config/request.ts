@@ -1,10 +1,11 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
-import { DEFAULT_LOCALE } from "@/shared/i18n";
+import { DEFAULT_LOCALE } from "../lib";
+import type { AppLocale } from "../lib";
 
 export default getRequestConfig(async () => {
   const cookieStore = await cookies();
-  const locale = cookieStore.get("locale")?.value ?? DEFAULT_LOCALE;
+  const locale = (cookieStore.get("locale")?.value ?? DEFAULT_LOCALE) as AppLocale;
 
   return {
     locale,
