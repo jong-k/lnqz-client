@@ -58,4 +58,5 @@ try {
   console.log("Locales check completed successfully");
 } catch (error) {
   console.error("Error during locales check:", error);
+  globalThis.process.exit(1);
 }
