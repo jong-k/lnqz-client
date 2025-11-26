@@ -1,3 +1,6 @@
-export const DEFAULT_LANGUAGE = "ko";
-export const LANGUAGES = [DEFAULT_LANGUAGE, "en"] as const;
-export type Language = (typeof LANGUAGES)[number];
+export const DEFAULT_LOCALE = "ko";
+export const LOCALES = [
+  { label: "한국어", value: "ko" },
+  { label: "English", value: "en" },
+] as const;
+export type Locale = (typeof LOCALES)[number]["value"];
