@@ -1,15 +1,9 @@
-"use client";
-
-import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { toast } from "sonner";
-import { Button } from "@/shared/shadcn-ui/components/ui/button";
 import { Logo } from "@/shared/ui";
+import AnnouncementButton from "./announcement-button";
 import SelectLocale from "./select-locale";
 
-export default function NavBar() {
-  const t = useTranslations();
-
+export default async function NavBar() {
   return (
     <nav className="flex items-center justify-between">
       <Link href="/">
@@ -17,13 +11,7 @@ export default function NavBar() {
       </Link>
       <div className="flex items-center gap-2">
         <SelectLocale />
-        <Button
-          className="cursor-pointer"
-          onClick={() => toast.info(`🚧 ${t("notification.comingSoon")} 🚧`)}
-          variant="ghost"
-        >
-          {t("ui.header.announcement")}
-        </Button>
+        <AnnouncementButton />
       </div>
     </nav>
   );
