@@ -1,7 +1,48 @@
 {
-  "pages": {
+  "metaData": {
+    "title": "Link Squeeze",
+    "author": "Jong-han Kim",
+    "slogan": "Shorten your links, because your time is valuable"
+  },
+  "page": {
     "home": {
-      "heading": "Shorten your links, because your time is valuable"
+      "subHeading": "You can shorten long URLs"
     }
+  },
+  "ui": {
+    "topBanner": {
+      "serviceLaunch": "Service Launch"
+    },
+    "header": {
+      "announcement": "Announcement"
+    },
+    "footer": {
+      "support": "Support",
+      "contactDeveloper": "Contact Developer",
+      "termsAndPolicy": "Terms and Policy",
+      "serviceTerms": "Terms of Service",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "shortener": {
+      "createdShortUrl": "Created Short URL"
+    }
+  },
+  "button": {
+    "learnMore": "Learn more",
+    "createShortUrl": "Create Short URL",
+    "removeInput": "Remove Input"
+  },
+  "notification": {
+    "copyEmail": "The email address {email} has been copied to the clipboard",
+    "comingSoon": "Coming Soon",
+    "needUrl": "Please enter a URL",
+    "needValidUrl": "Please enter a valid URL",
+    "createShortUrl": {
+      "error": "Failed to create short URL",
+      "success": "Short URL created successfully"
+    }
+  },
+  "validation": {
+    "invalidUrl": "URL is not valid"
   }
 }

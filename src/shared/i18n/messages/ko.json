@@ -1,7 +1,48 @@
 {
-  "pages": {
+  "metaData": {
+    "title": "링크 스퀴즈",
+    "author": "김종한",
+    "slogan": "링크를 줄이세요, 당신의 시간은 소중하니까"
+  },
+  "page": {
     "home": {
-      "heading": "링크를 줄이세요, 당신의 시간은 소중하니까"
+      "subHeading": "긴 URL을 짧게 줄일 수 있습니다"
     }
+  },
+  "ui": {
+    "topBanner": {
+      "serviceLaunch": "서비스 오픈"
+    },
+    "header": {
+      "announcement": "공지사항"
+    },
+    "footer": {
+      "support": "고객 지원",
+      "contactDeveloper": "개발자에게 문의",
+      "termsAndPolicy": "약관 및 정책",
+      "serviceTerms": "서비스 이용약관",
+      "privacyPolicy": "개인정보 처리방침"
+    },
+    "shortener": {
+      "createdShortUrl": "생성된 단축 URL"
+    }
+  },
+  "button": {
+    "learnMore": "자세히 알아보기",
+    "createShortUrl": "단축 URL 생성",
+    "removeInput": "입력값 지우기"
+  },
+  "notification": {
+    "copyEmail": "메일 주소 {email} 를 클립보드에 복사했습니다",
+    "comingSoon": "기능 준비중",
+    "needUrl": "URL을 입력해주세요",
+    "needValidUrl": "유효한 URL을 입력해주세요",
+    "createShortUrl": {
+      "error": "단축 URL 생성에 실패했습니다",
+      "success": "단축 URL 생성에 성공했습니다"
+    }
+  },
+  "validation": {
+    "invalidUrl": "URL이 유효하지 않습니다"
   }
 }
