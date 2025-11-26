@@ -56,7 +56,7 @@ export default function ShortenerForm() {
       </Button>
       {generatedShortUrl && (
         <Alert className="bg-slate-100 shadow-sm">
-          <AlertTitle>{t("shortener.createdShortUrl")}</AlertTitle>
+          <AlertTitle>{t("ui.shortener.createdShortUrl")}</AlertTitle>
           <AlertDescription className="w-full">
             <a
               className="underline hover:text-sky-600"
