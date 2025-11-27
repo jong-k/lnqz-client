@@ -12,8 +12,7 @@
     "lint-fix": "eslint . --fix",
     "format": "prettier --write .",
     "check-locales": "node scripts/check-locales.mjs",
-    "prepare": "husky",
-    "test-script": "node scripts/test-script.mjs"
+    "prepare": "husky"
   },
   "lint-staged": {
     "**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}": [
