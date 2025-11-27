@@ -1,2 +1,1 @@
-echo "실행: pnpm lint-staged"
 pnpm lint-staged
