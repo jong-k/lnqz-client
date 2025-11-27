@@ -8,7 +8,7 @@ const loadJson = async path => {
     const jsonContent = await readFile(path, "utf8");
     return JSON.parse(jsonContent);
   } catch (error) {
-    console.error(`Error reading or parsing JSON file at ${path}:`, error);
+    console.error(`다음 경로의 JSON 파일을 읽어들이거나 파싱하는데 오류가 발생했습니다: ${path}`, error);
     throw error;
   }
 };
@@ -39,28 +39,28 @@ const checkKeys = async () => {
 
   const missingInKo = enKeys.filter(key => !koKeysSet.has(key));
   const missingInEn = koKeys.filter(key => !enKeysSet.has(key));
-  console.log("Checking for missing keys between ko.json and en.json...");
+  console.log("ko.json과 en.json 간의 누락된 키를 확인하는 중...");
 
   if (missingInKo.length > 0) {
     hasError = true;
-    console.error("Missing keys in ko.json:", missingInKo);
+    console.error("ko.json에 누락된 키:", missingInKo);
   } else {
-    console.log("No missing keys in ko.json");
+    console.log("ko.json에 누락된 키가 없습니다");
   }
 
   if (missingInEn.length > 0) {
     hasError = true;
-    console.error("Missing keys in en.json:", missingInEn);
+    console.error("en.json에 누락된 키:", missingInEn);
   } else {
-    console.log("No missing keys in en.json");
+    console.log("en.json에 누락된 키가 없습니다");
   }
   if (hasError) globalThis.process.exit(1);
 };
 
 try {
   await checkKeys();
-  console.log("Locales check completed successfully");
+  console.log("Locales 체크가 성공적으로 완료되었습니다");
 } catch (error) {
-  console.error("Error during locales check:", error);
+  console.error("Locales 체크 중 오류가 발생했습니다:", error);
   globalThis.process.exit(1);
 }
