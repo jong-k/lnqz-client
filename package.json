@@ -16,8 +16,10 @@
     "test-script": "node scripts/test-script.mjs"
   },
   "lint-staged": {
+    "**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}": [
+      "pnpm exec eslint --fix"
+    ],
     "src/shared/i18n/config/messages/{ko,en}.json": [
-      "echo \"실행: pnpm check-locales - locale json 파일 변경이 감지되었습니다\"",
       "pnpm check-locales"
     ]
   },
