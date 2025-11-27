@@ -16,7 +16,7 @@
   },
   "lint-staged": {
     "src/shared/i18n/config/messages/{ko,en}.json": [
-      "echo \"locale json 파일 변경이 감지되었습니다. check-locales 스크립트를 실행합니다\"",
+      "echo \"실행: pnpm check-locales - locale json 파일 변경이 감지되었습니다\"",
       "pnpm check-locales"
     ]
   },
