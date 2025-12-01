@@ -47,7 +47,7 @@ export default function ShortenerForm() {
           onClick={clearInput}
           type="button"
         >
-          <X aria-hidden className="size-4" />
+          <X aria-hidden size={16} />
         </button>
       </div>
       <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">{t("validation.invalidUrl")}</p>}</div>
