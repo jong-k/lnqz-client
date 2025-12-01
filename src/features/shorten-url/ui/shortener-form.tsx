@@ -79,7 +79,7 @@ export default function ShortenerForm() {
             >
               {generatedShortUrl}
             </a>
-            <IconButton className="ml-2" onClick={copyShortUrlToClipboard}>
+            <IconButton className="ml-2" aria-label={t("button.copyShortUrl")} onClick={copyShortUrlToClipboard}>
               <Copy size={16} />
             </IconButton>
           </AlertDescription>
