@@ -33,7 +33,10 @@
     "removeInput": "Remove Input"
   },
   "notification": {
-    "copyEmail": "The email address {email} has been copied to the clipboard",
+    "copyEmail": {
+      "success": "Email address {email} copied to clipboard",
+      "error": "Failed to copy email address to clipboard"
+    },
     "comingSoon": "Coming Soon",
     "needUrl": "Please enter a URL",
     "needValidUrl": "Please enter a valid URL",
