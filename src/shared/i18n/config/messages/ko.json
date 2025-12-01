@@ -30,16 +30,24 @@
   "button": {
     "learnMore": "자세히 알아보기",
     "createShortUrl": "단축 URL 생성",
-    "removeInput": "입력값 지우기"
+    "removeInput": "입력값 지우기",
+    "copyShortUrl": "단축 URL 복사"
   },
   "notification": {
-    "copyEmail": "메일 주소 {email} 를 클립보드에 복사했습니다",
+    "copyEmail": {
+      "success": "이메일 주소 {email} 가 클립보드에 복사되었습니다",
+      "error": "이메일 주소를 클립보드에 복사하지 못했습니다"
+    },
     "comingSoon": "기능 준비중",
     "needUrl": "URL을 입력해주세요",
     "needValidUrl": "유효한 URL을 입력해주세요",
     "createShortUrl": {
       "error": "단축 URL 생성에 실패했습니다",
       "success": "단축 URL 생성에 성공했습니다"
+    },
+    "copyShortUrl": {
+      "success": "단축 URL이 클립보드에 복사되었습니다",
+      "error": "단축 URL을 클립보드에 복사하지 못했습니다"
     }
   },
   "validation": {

@@ -30,16 +30,24 @@
   "button": {
     "learnMore": "Learn more",
     "createShortUrl": "Create Short URL",
-    "removeInput": "Remove Input"
+    "removeInput": "Remove Input",
+    "copyShortUrl": "Copy Short URL"
   },
   "notification": {
-    "copyEmail": "The email address {email} has been copied to the clipboard",
+    "copyEmail": {
+      "success": "Email address {email} copied to clipboard",
+      "error": "Failed to copy email address to clipboard"
+    },
     "comingSoon": "Coming Soon",
     "needUrl": "Please enter a URL",
     "needValidUrl": "Please enter a valid URL",
     "createShortUrl": {
       "error": "Failed to create short URL",
       "success": "Short URL created successfully"
+    },
+    "copyShortUrl": {
+      "success": "Short URL copied to clipboard",
+      "error": "Failed to copy short URL to clipboard"
     }
   },
   "validation": {

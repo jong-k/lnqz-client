@@ -1,14 +1,17 @@
 "use client";
 
 import { debounce } from "es-toolkit/function";
-import { X } from "lucide-react";
+import { Copy, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import type { ChangeEvent } from "react";
+import { toast } from "sonner";
 import { useShortenUrl } from "@/features/shorten-url/model/use-shorten-url";
+import { copyToClipboard } from "@/shared/lib";
 import { Alert, AlertDescription, AlertTitle } from "@/shared/shadcn-ui/components/ui/alert";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 import { Input } from "@/shared/shadcn-ui/components/ui/input";
+import { IconButton } from "@/shared/ui";
 
 export default function ShortenerForm() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -32,6 +35,16 @@ export default function ShortenerForm() {
     await submit(value);
   };
 
+  const copyShortUrlToClipboard = async () => {
+    if (!generatedShortUrl) return;
+    try {
+      await copyToClipboard(generatedShortUrl);
+      toast.success(t("notification.copyShortUrl.success"));
+    } catch {
+      toast.error(t("notification.copyShortUrl.error"));
+    }
+  };
+
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <div className="relative">
@@ -47,7 +60,7 @@ export default function ShortenerForm() {
           onClick={clearInput}
           type="button"
         >
-          <X aria-hidden className="size-4" />
+          <X aria-hidden size={16} />
         </button>
       </div>
       <div className="h-5">{isInvalidUrl && <p className="text-sm text-red-500">{t("validation.invalidUrl")}</p>}</div>
@@ -57,7 +70,7 @@ export default function ShortenerForm() {
       {generatedShortUrl && (
         <Alert className="bg-slate-100 shadow-sm">
           <AlertTitle>{t("ui.shortener.createdShortUrl")}</AlertTitle>
-          <AlertDescription className="w-full">
+          <AlertDescription className="flex w-full items-center">
             <a
               className="underline hover:text-sky-600"
               href={generatedShortUrl}
@@ -66,6 +79,9 @@ export default function ShortenerForm() {
             >
               {generatedShortUrl}
             </a>
+            <IconButton className="ml-2" aria-label={t("button.copyShortUrl")} onClick={copyShortUrlToClipboard}>
+              <Copy size={16} />
+            </IconButton>
           </AlertDescription>
         </Alert>
       )}
