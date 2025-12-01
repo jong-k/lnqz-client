@@ -30,7 +30,8 @@
   "button": {
     "learnMore": "자세히 알아보기",
     "createShortUrl": "단축 URL 생성",
-    "removeInput": "입력값 지우기"
+    "removeInput": "입력값 지우기",
+    "copyShortUrl": "단축 URL 복사"
   },
   "notification": {
     "copyEmail": {

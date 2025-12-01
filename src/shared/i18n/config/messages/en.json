@@ -30,7 +30,8 @@
   "button": {
     "learnMore": "Learn more",
     "createShortUrl": "Create Short URL",
-    "removeInput": "Remove Input"
+    "removeInput": "Remove Input",
+    "copyShortUrl": "Copy Short URL"
   },
   "notification": {
     "copyEmail": {
