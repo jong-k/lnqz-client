@@ -2,12 +2,17 @@
 
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
+import { copyToClipboard } from "@/shared/lib";
 import { Button } from "@/shared/shadcn-ui/components/ui/button";
 
-const handleContactClick = (t: ReturnType<typeof useTranslations>) => {
+const handleContactClick = async (t: ReturnType<typeof useTranslations>) => {
   const EMAIL_ADDRESS = "dev.jonghankim@gmail.com";
-  navigator.clipboard.writeText(EMAIL_ADDRESS);
-  toast.success(t("notification.copyEmail", { email: EMAIL_ADDRESS }));
+  try {
+    await copyToClipboard(EMAIL_ADDRESS);
+    toast.success(t("notification.copyEmail.success", { email: EMAIL_ADDRESS }));
+  } catch {
+    toast.error(t("notification.copyEmail.error"));
+  }
 };
 
 export default function FooterMenu() {
