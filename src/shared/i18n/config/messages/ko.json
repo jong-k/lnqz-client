@@ -40,6 +40,10 @@
     "createShortUrl": {
       "error": "단축 URL 생성에 실패했습니다",
       "success": "단축 URL 생성에 성공했습니다"
+    },
+    "copyShortUrl": {
+      "success": "단축 URL이 클립보드에 복사되었습니다",
+      "error": "단축 URL을 클립보드에 복사하지 못했습니다"
     }
   },
   "validation": {

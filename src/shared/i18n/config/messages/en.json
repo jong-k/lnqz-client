@@ -40,6 +40,10 @@
     "createShortUrl": {
       "error": "Failed to create short URL",
       "success": "Short URL created successfully"
+    },
+    "copyShortUrl": {
+      "success": "Short URL copied to clipboard",
+      "error": "Failed to copy short URL to clipboard"
     }
   },
   "validation": {
