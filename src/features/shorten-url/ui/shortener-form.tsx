@@ -39,9 +39,9 @@ export default function ShortenerForm() {
     if (!generatedShortUrl) return;
     try {
       await copyToClipboard(generatedShortUrl);
-      toast.success("Short URL copied to clipboard!");
+      toast.success(t("notification.copyShortUrl.success"));
     } catch {
-      toast.error("Failed to copy short URL to clipboard.");
+      toast.error(t("notification.copyShortUrl.error"));
     }
   };
 
